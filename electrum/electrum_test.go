@@ -10,7 +10,7 @@ import (
 
 func TestXxx(t *testing.T) {
 	DebugMode = true
-	b, err := GetBitcoinConfirmedBalance(context.Background(), "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa")
+	b, err := GetBitcoinConfirmedBalance(context.Background(), "bch.imaginary.cash:50001", "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa")
 	require.NoError(t, err)
 	assert.True(t, b > 0)
 }
