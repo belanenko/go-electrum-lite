@@ -4,6 +4,8 @@ import (
 	"context"
 	"log"
 	"time"
+
+	"github.com/btcsuite/btcd/btcutil"
 )
 
 func GetBitcoinConfirmedBalance(ctx context.Context, nodeAddress, btcAddress string) (float64, error) {
@@ -23,8 +25,13 @@ func GetBitcoinConfirmedBalance(ctx context.Context, nodeAddress, btcAddress str
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	a, err := btcutil.NewAmount(balance.Confirmed)
+	if err != nil {
+		return 0, err
+	}
 	log.Printf("Scripthash:   %+v", scripthash)
 	log.Printf("Address confirmed balance:   %+v", balance.Confirmed)
 	log.Printf("Address unconfirmed balance: %+v", balance.Unconfirmed)
-	return balance.Confirmed, nil
+	return a.ToBTC(), nil
 }
