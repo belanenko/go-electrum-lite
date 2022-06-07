@@ -1,4 +1,4 @@
-module gitlab.midas.dev/belanenko/go-electrum-lite/electrum
+module github.com/belanenko/go-electrum-lite
 
 go 1.18
 
